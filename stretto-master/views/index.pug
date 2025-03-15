@@ -1,0 +1,21 @@
+extends layout.pug
+
+block content
+  div.offscreen#ytplayer
+  div#react
+
+block scripts
+  script.
+    let env = !{JSON.stringify(env).replace(/<\//g, "<\\/")}
+  script(src='https://apis.google.com/js/client.js')
+  script(src='/static/js/main.js', type='text/javascript')
+
+block stylesheets
+  style(type="text/css").
+    .offscreen {
+      margin-left: -9999px;
+      position: absolute;
+    }
+  link(id='theme' href='https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css' crossorigin="anonymous", rel='stylesheet')
+  link(href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' crossorigin="anonymous", rel='stylesheet')
+  style(type="text/css" id="theme-overrides")
