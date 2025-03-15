@@ -1,7 +1,0 @@
-{
-  "execMap": {
-    "js": "node --harmony"
-  },
-  "ext": "js jsx scss",
-  "ignore": ["static/js/bundle.js"]
-}
