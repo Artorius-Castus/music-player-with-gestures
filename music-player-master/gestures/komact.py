@@ -1,0 +1,2 @@
+a = "sagar"
+print(a)

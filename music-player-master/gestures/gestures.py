@@ -51,3 +51,5 @@ print("-Move you palm down to deccrease volume")
 while True:
     ret,frame = cap.read()
     frame = cv2# 5;33
+
+    
