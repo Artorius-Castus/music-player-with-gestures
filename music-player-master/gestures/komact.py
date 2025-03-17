@@ -7,3 +7,7 @@ print(a)
 
 a = "bhosdi"
 print(a)
+
+
+a = "blackpusi 🐈"
+print(a)
