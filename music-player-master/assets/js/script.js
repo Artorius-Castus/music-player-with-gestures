@@ -407,4 +407,44 @@ const muteVolume = function () {
   }
 }
 
-playerVolumeBtn.addEventListener("click", muteVolume);
+playerVolumeBtn.addEventListener("click", muteVolume); //lines from gpt to connect websocket server to the js file
+
+// WebSocket connection to the Python gesture recognition server
+const socket = new WebSocket("ws://localhost:8765");
+
+socket.onopen = function () {
+    console.log("Connected to gesture control server");
+};
+
+socket.onmessage = function (event) {
+    const data = JSON.parse(event.data);
+    console.log("Gesture received:", data.gesture);
+
+    switch (data.gesture) {
+        case "play_pause":
+            playPause(); // Call your existing play/pause function
+            break;
+        case "next":
+            nextTrack(); // Call your function for next song
+            break;
+        case "previous":
+            prevTrack(); // Call your function for previous song
+            break;
+        case "volume_up":
+            increaseVolume(); // Call your function to increase volume
+            break;
+        case "volume_down":
+            decreaseVolume(); // Call your function to decrease volume
+            break;
+        default:
+            console.log("Unknown gesture");
+    }
+};
+
+socket.onerror = function (error) {
+    console.error("WebSocket Error:", error);
+};
+
+socket.onclose = function () {
+    console.log("Disconnected from gesture control server");
+};
